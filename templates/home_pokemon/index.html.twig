@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokédex{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+      <div class="jumbotron mb-4">
+        <h1>TP Pokédex</h1>
+        <p class="lead">Retrouvez ci dessous le listing des Pokémon de la génération <span class="badge rounded-pill bg-primary">#{{ generation_number }}</span></p>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col col-lg-3">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+        </div>
+      </div>
+
+    </div> <!-- /container -->
+
+{% endblock %}

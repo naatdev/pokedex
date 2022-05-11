@@ -12,7 +12,7 @@ class HomePokemonController extends AbstractController
     public function index(): Response
     {
         return $this->render('home_pokemon/index.html.twig', [
-            'controller_name' => 'HomePokemonController',
+            'generation_number' => $_ENV['POKE_GENERATION'],
         ]);
     }
 }

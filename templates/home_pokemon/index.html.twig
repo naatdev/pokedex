@@ -15,7 +15,7 @@
             <div class="col col-lg-3 my-4">
                 <h4>{{ pokemon_specie.name | capitalize }}</h4>
                 <p>
-                    <a href="" class="btn btn-sm btn-primary">Voir les détails</a>
+                    <a href="{{ path('pokemon_details', { 'id' : pokemon_specie.id }) }}" class="btn btn-sm btn-primary">Voir les détails</a>
                 </p>
             </div>
         {% endfor %}

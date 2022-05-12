@@ -67,3 +67,5 @@ yarn-error.log
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+export_pokemon.csv

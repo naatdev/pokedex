@@ -76,6 +76,7 @@ class PokeApiService
         $response['legendary'] = $response['is_legendary'];
         $response['mythical'] = $response['is_mythical'];
         $response['happiness'] = $response['base_happiness'];
+        $response['id'] = (int)$pokemon_id;
 
         // transform array to entity with serializer
         $normalizer = new ObjectNormalizer(null, null, null, new ReflectionExtractor());

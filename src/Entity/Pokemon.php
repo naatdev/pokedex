@@ -107,4 +107,18 @@ class Pokemon
 
         return $this;
     }
+
+    public function toArrayForCSV(): array
+    {
+        $return = [
+            'name'          => $this->getName(),
+            'hapiness'      => $this->getHappiness(),
+            'capture_rate'  => $this->getCaptureRate(),
+            'legendary'     => $this->isLegendary() ? 1 : 0,
+            'mythical'      => $this->isMythical() ? 1 : 0,
+            'color'         => $this->getColor(),
+        ];
+
+        return $return;
+    }
 }

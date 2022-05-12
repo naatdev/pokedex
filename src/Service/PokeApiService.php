@@ -46,6 +46,7 @@ class PokeApiService
             $pokemons[] = [
                 'id'    => $id,
                 'name'  => $pokemon['name'],
+                'details' => $this->getPokemonDetails($id),
             ];
         }
 

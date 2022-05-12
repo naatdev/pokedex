@@ -11,11 +11,30 @@
       </div>
 
       <div class="row mt-4">
-        <h1>{{pokemon.name}}</h1>
+        <h1 class="mb-4">{{pokemon.name}}</h1>
         <div class="col col-lg-4">
+          <h5>Couleur</h5>
           <span class="badge rounded-pill" style="background-color:{{pokemon.color}};">Couleur</span>
-        </div>
-      </div>
+
+          <h5 class="mt-4">Bonne humeur</h5>
+          <div class="progress" style="height: 20px;">
+            <div class="progress-bar" role="progressbar" style="width: {{pokemon.happiness}}%;" aria-valuenow="{{pokemon.happiness}}" aria-valuemin="0" aria-valuemax="1000">{{pokemon.happiness}}</div>
+          </div>
+
+          <h5 class="mt-4">Taux de capture</h5>
+          <span>{{pokemon.captureRate}}</span>
+        </div><!-- /col -->
+
+        <div class="col col-lg-4">
+          <img src="{{ picture }}" class="img-fluid" alt="{{pokemon.name}}" />
+          <span class="badge bg-{{ pokemon.legendary ? 'primary' : 'light' }}">
+            {{ pokemon.legendary ? 'Légendaire' : 'Pas légendaire' }}
+          </span>
+          <span class="badge bg-{{ pokemon.mythical ? 'primary' : 'light' }}">
+            {{ pokemon.mythical ? 'Mythique' : 'Pas mythique' }}
+          </span>
+        </div><!-- /col -->
+      </div><!-- /row -->
 
     </div> <!-- /container -->
 

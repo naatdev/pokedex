@@ -27,11 +27,13 @@ class HomePokemonController extends AbstractController
     {
         // get pokemon species for a specific generation
         $pokemon = $pokeApiService->getPokemonDetails($id);
+        $picture = $pokeApiService->getPokemonPicture($id);
 
         // render view with pokemon species and geenration number
         return $this->render('home_pokemon/pokemon_details.html.twig', [
             'pokemon_id'        => $id,
             'pokemon'           => $pokemon,
+            'picture'           => $picture,
         ]);
     }
 }

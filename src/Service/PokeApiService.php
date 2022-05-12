@@ -16,6 +16,9 @@ class PokeApiService
         $this->client = $client;
     }
 
+    /**
+     * Return an array of pokemons of a specific generation
+     */
     public function getPokemonsByGeneration($generation): array
     {
         // call GET generation
@@ -49,6 +52,9 @@ class PokeApiService
         return $pokemons;
     }
 
+    /**
+     * Return a pokemon
+     */
     public function getPokemonDetails($pokemon_id): Pokemon
     {
         // call GET pokemon
@@ -76,5 +82,20 @@ class PokeApiService
         $serializer = new Serializer([$normalizer]);
 
         return $serializer->denormalize($response, Pokemon::class);
+    }
+
+    // Return the picture of a pokemon
+    public function getPokemonPicture($pokemon_id): string
+    {
+        // call GET pokemon picture
+        $response = $this->client->request(
+            'GET',
+            'https://pokeapi.co/api/v2/pokemon/' . $pokemon_id
+        );
+
+        // get response as array and tranform it
+        $response = $response->toArray();
+        
+        return $response['sprites']['front_default'];
     }
 }

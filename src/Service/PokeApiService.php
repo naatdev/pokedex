@@ -1,7 +1,11 @@
 <?php
 namespace App\Service;
 
+use App\Entity\Pokemon;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 
 class PokeApiService
 {
@@ -43,5 +47,34 @@ class PokeApiService
         }
 
         return $pokemons;
+    }
+
+    public function getPokemonDetails($pokemon_id): Pokemon
+    {
+        // call GET pokemon
+        $response = $this->client->request(
+            'GET',
+            'https://pokeapi.co/api/v2/pokemon-species/' . $pokemon_id
+        );
+
+        // get response as array and tranform it
+        $response = $response->toArray();
+        $response['color'] = $response['color']['name'];
+
+        foreach($response['names'] as $name) {
+            if($name['language']['name'] == 'fr') {
+                $response['name'] = $name['name'];
+            }
+        }
+
+        $response['legendary'] = $response['is_legendary'];
+        $response['mythical'] = $response['is_mythical'];
+        $response['happiness'] = $response['base_happiness'];
+
+        // transform array to entity with serializer
+        $normalizer = new ObjectNormalizer(null, null, null, new ReflectionExtractor());
+        $serializer = new Serializer([$normalizer]);
+
+        return $serializer->denormalize($response, Pokemon::class);
     }
 }

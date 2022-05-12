@@ -13,7 +13,7 @@
       <div class="row mt-4">
         {% for pokemon_specie in pokemon_species %}
             <div class="col col-lg-3 my-4">
-                <h4>{{ pokemon_specie.name | capitalize }}</h4>
+                <h4>{{ pokemon_specie.details.name | capitalize }}</h4>
                 <p>
                     <a href="{{ path('pokemon_details', { 'id' : pokemon_specie.id }) }}" class="btn btn-sm btn-primary">Voir les détails</a>
                 </p>

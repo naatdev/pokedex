@@ -52,6 +52,8 @@ class ExportPokemonsCommand extends Command
         // close file
         fclose($output_buffer);
 
+        $output->writeln('<info>Export effectué!</info>');
+
         return Command::SUCCESS;
     }
 }
